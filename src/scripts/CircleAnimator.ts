@@ -6,9 +6,8 @@ export function start(circles : Circle[]) {
     context2D.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < circles.length; i++) {
+        const circleA = circles[i];
         for (let j = i + 1; j < circles.length; j++) {
-
-            const circleA = circles[i];
             const circleB = circles[j];
 
             const result = process(circleA, circleB);
