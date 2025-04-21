@@ -5,14 +5,8 @@ import {IntersectionType, process} from "./CircleRelations.ts";
 export function start(circles : Circle[]) {
     context2D.clearRect(0, 0, canvas.width, canvas.height);
 
-    let alreadyProcessed :string[] = [];
-
     for (let i = 0; i < circles.length; i++) {
-        for (let j = 0; j < circles.length; j++) {
-
-            if(i == j) continue;
-
-            if(alreadyProcessed.includes(`${i}-${j}`)) continue;
+        for (let j = i + 1; j < circles.length; j++) {
 
             const circleA = circles[i];
             const circleB = circles[j];
@@ -26,9 +20,6 @@ export function start(circles : Circle[]) {
                 circleB.xSpeed = -circleB.xSpeed;
                 circleB.ySpeed = -circleB.ySpeed;
             }
-
-            alreadyProcessed.push(`${i}-${j}`)
-            alreadyProcessed.push(`${j}-${i}`)
 
         }
     }
