@@ -18,7 +18,7 @@ export class Circle {
         this._ySpeed = ySpeed;
     }
 
-    public updateMovement = () => {
+    public draw = () => {
 
         context2D.beginPath();
         context2D.arc(this._x, this._y, this._radius, 0, Math.PI * 2);
@@ -26,6 +26,9 @@ export class Circle {
         context2D.fill();
         context2D.closePath();
 
+    }
+
+    public move = () => {
         if (this._x + this._radius > canvas.width || this._x - this._radius < 0) this._xSpeed = -this._xSpeed;
         if (this._y + this._radius > canvas.height || this._y - this._radius < 0) this._ySpeed = -this._ySpeed;
 

@@ -34,7 +34,8 @@ export function start(circles : Circle[]) {
     }
 
     for(const circle of circles) {
-        circle.updateMovement();
+        circle.draw();
+        circle.move();
     }
 
     requestAnimationFrame(() => start(circles));
