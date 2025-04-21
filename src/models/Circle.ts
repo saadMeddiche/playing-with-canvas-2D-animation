@@ -2,35 +2,84 @@ import {canvas, context2D} from "../constants/MainConstants.ts";
 
 export class Circle {
 
-    private color :string;
-    private radius :number;
-    private x :number;
-    private y :number;
-    private xSpeed :number;
-    private ySpeed :number;
+    private _color :string;
+    private _radius :number;
+    private _x :number;
+    private _y :number;
+    private _xSpeed :number;
+    private _ySpeed :number;
 
     constructor(color :string, radius :number, x :number, y :number, xSpeed :number , ySpeed :number) {
-        this.color = color;
-        this.radius = radius;
-        this.x = x;
-        this.y = y;
-        this.xSpeed = xSpeed;
-        this.ySpeed = ySpeed;
+        this._color = color;
+        this._radius = radius;
+        this._x = x;
+        this._y = y;
+        this._xSpeed = xSpeed;
+        this._ySpeed = ySpeed;
     }
 
-     public updateMovement = () => {
+    public updateMovement = () => {
 
         context2D.beginPath();
-        context2D.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        context2D.fillStyle = this.color;
+        context2D.arc(this._x, this._y, this._radius, 0, Math.PI * 2);
+        context2D.fillStyle = this._color;
         context2D.fill();
         context2D.closePath();
 
-        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) this.xSpeed = -this.xSpeed;
-        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) this.ySpeed = -this.ySpeed;
+        if (this._x + this._radius > canvas.width || this._x - this._radius < 0) this._xSpeed = -this._xSpeed;
+        if (this._y + this._radius > canvas.height || this._y - this._radius < 0) this._ySpeed = -this._ySpeed;
 
-        this.x += this.xSpeed;
-        this.y += this.ySpeed;
+        this._x += this._xSpeed;
+        this._y += this._ySpeed;
     }
+
+    get color(): string {
+        return this._color;
+    }
+
+    set color(value: string) {
+        this._color = value;
+    }
+
+    get radius(): number {
+        return this._radius;
+    }
+
+    set radius(value: number) {
+        this._radius = value;
+    }
+
+    get x(): number {
+        return this._x;
+    }
+
+    set x(value: number) {
+        this._x = value;
+    }
+
+    get y(): number {
+        return this._y;
+    }
+
+    set y(value: number) {
+        this._y = value;
+    }
+
+    get xSpeed(): number {
+        return this._xSpeed;
+    }
+
+    set xSpeed(value: number) {
+        this._xSpeed = value;
+    }
+
+    get ySpeed(): number {
+        return this._ySpeed;
+    }
+
+    set ySpeed(value: number) {
+        this._ySpeed = value;
+    }
+
 
 }
