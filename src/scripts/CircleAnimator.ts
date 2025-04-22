@@ -3,6 +3,8 @@ import {canvas, context2D} from "../constants/MainConstants.ts";
 import {IntersectionType, process} from "./CircleRelations.ts";
 
 export function start(circles : Circle[]) {
+    requestAnimationFrame(() => start(circles));
+
     context2D.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < circles.length; i++) {
@@ -28,5 +30,4 @@ export function start(circles : Circle[]) {
         circle.move();
     }
 
-    requestAnimationFrame(() => start(circles));
 }
